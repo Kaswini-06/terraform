@@ -1,16 +1,19 @@
+terraform {
+    required_version = "~> 1.14.3" //  Value mention as per your terraform version
+    required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.27.0"  // Value mention as per your aws version
+     }
+    }
+   }
 
-
-```hcl
 provider "aws" {
-  region = var.aws_region
+	region = "us-east-1"
+	
 }
 
-resource "aws_instance" "example" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-
-  tags = {
-    Name = "Terraform-EC2"
-  }
+resource "aws_instance" "aswiniinfra" {
+	ami = "ami-068c0051b15cdb816" // Refer aws and get correct ami id
+	instance_type = "t3.micro"
 }
